@@ -1,0 +1,5 @@
+/job/build_pipeline/pipeline-syntax/
+
+// ARCHIVE ARTIFACTS STEP
+
+step:General Build Step ==>> Arhive the artifacts
