@@ -5,5 +5,3 @@ make sure user has 1000 uid, if not use usermod -u <NEWUID> <LOGIN>
                                         groupmod -g <NEWGID> <GROUP>
 
 docker run -d -u jenkins:jenkins -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home jenkins/jenkins:lts
-
-!!! but it doesn't work with git, so i use root for now.. sorry for that..
