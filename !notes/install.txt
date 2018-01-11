@@ -1,6 +1,6 @@
 https://github.com/jenkinsci/docker/blob/master/README.md
 
 useradd -M jenkins -c "Jenkins docker user"
-cat /etc/passwd
-grab UID ==>> e.g.:1001
-docker run -d -u 1001 -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home jenkins/jenkins:lts
+make sure user has 1000 uid, if not use usermod -u <NEWUID> <LOGIN>
+                                        groupmod -g <NEWGID> <GROUP>
+docker run -d -u jenkins:jenkins -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home jenkins/jenkins:lts
