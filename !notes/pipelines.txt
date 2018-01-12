@@ -4,3 +4,34 @@ http://docs.groovy-lang.org/docs/latest/html/documentation/
 // ARCHIVE ARTIFACTS STEP
 
 step:General Build Step ==>> Arhive the artifacts
+
+// STASH
+stash name: 'Checked out code',
+      excludes: 'docs/**',
+      includes: '**'
+
+// UNSTASH
+unstash 'Checked out code'
+
+// NODES
+node ('_node_name') ==>> preferred node
+{
+ // some steps here
+}
+
+// PARALLEL
+parallel first: {
+  runTest('Chrome')
+}, second: {
+}, failFast: true | false
+
+// Defining functions:
+
+def runTest(browser) {
+  node {
+    sh 'rm -rf *'
+    unstash 'errything'
+    sh 'npm run test --browser ${browser}'
+    ...
+  }
+}
