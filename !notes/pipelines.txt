@@ -23,7 +23,7 @@ node ('_node_name') ==>> preferred node
 parallel first: {
   runTest('Chrome')
 }, second: {
-}, failFast: true | false
+}, failFast: true | false ==>> fail if one of the tests fails
 
 // Defining functions:
 
