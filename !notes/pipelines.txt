@@ -5,6 +5,9 @@ http://docs.groovy-lang.org/docs/latest/html/documentation/
 
 step:General Build Step ==>> Arhive the artifacts
 
+// STAGES
+stage name: 'Some name', concurrency: 1 ==>> limit concurrency so we don't perform simultaneous deploys and if multiple pipelines are executing, newest is only that will be allowed through, rest will be cancelled
+
 // STASH
 stash name: 'Checked out code',
       excludes: 'docs/**',
@@ -35,3 +38,7 @@ def runTest(browser) {
     ...
   }
 }
+
+// MANUAL APPROVAL
+// it should'n be allocated within any node
+input 'Deploy to stage ?'
