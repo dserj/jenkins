@@ -3,5 +3,8 @@ https://github.com/jenkinsci/docker/blob/master/README.md
 useradd -M jenkins -c "Jenkins docker user"
 make sure user has 1000 uid, if not use usermod -u <NEWUID> <LOGIN>
                                         groupmod -g <NEWGID> <GROUP>
-
+// Blue ocean pre-installed
 docker run --rm -d -u jenkins:jenkins -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME/jenkins":/home jenkinsci/blueocean
+
+// LTS one (now working fine)
+docker run --rm -d -u jenkins:jenkins -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home jenkins/jenkins:lts
