@@ -14,6 +14,13 @@ docker run --rm --name jenkins -d -p 8080:8080 -p 50000:50000 -v /usr/local/src/
 CentOs
 https://www.vultr.com/docs/how-to-install-jenkins-on-centos-7
 
+### fix ngix permission denied problem
+https://stackoverflow.com/questions/23948527/13-permission-denied-while-connecting-to-upstreamnginx
+
+> setsebool -P httpd_can_network_connect 1
+> sudo cat /var/log/audit/audit.log | grep nginx | grep denied | audit2allow -M mynginx
+> sudo semodule -i mynginx.pp
+
 ### global config file:
 /etc/sysconfig/jenkins
 
