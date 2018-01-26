@@ -7,4 +7,16 @@ make sure user has 1000 uid, if not use usermod -u <NEWUID> <LOGIN>
 docker run --rm -d -u jenkins:jenkins -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME/jenkins":/home jenkinsci/blueocean
 
 // LTS one (now working fine)
-docker run --rm -d -u jenkins:jenkins -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home jenkins/jenkins:lts
+docker run --rm --name jenkins -d -p 8080:8080 -p 50000:50000 -v /usr/local/src/jenkins:/var/jenkins_home --privileged -e DOCKER_IN_DOCKER="start" jenkins/jenkins:lts
+
+// install on-premise:
+
+CentOs
+https://www.vultr.com/docs/how-to-install-jenkins-on-centos-7
+
+### global config file:
+/etc/sysconfig/jenkins
+
+systemctl start jenkins
+systemctl enable jenkins ==>> run after reboot
+systemctl reload jenkins
